@@ -1,7 +1,7 @@
 pipeline {
 	agent any
 	environment {
-       KUBECONFIG='~/.kube/kubeconfig'
+       KUBECONFIG='~/.kube/config'
        THE_BUTLER_SAYS_SO=credentials('udacity-capstone')//can be used in whole pipeline
    }
 	stages {
