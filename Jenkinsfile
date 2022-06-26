@@ -63,17 +63,7 @@ pipeline {
         }
 	}
 
-		stage('Set Current kubectl Context') {
-			steps {
-                    withEnv(["KUBECONFIG=$HOME/.kube/config"]) {
-                    // Your stuff here
-                    sh '''
-						kubectl config use-context arn:aws:eks:us-east-1:900569321428:cluster/udacitycluster
-					'''
-                    }	
 
-			}
-		}
 
 		stage('Deploy Blue Container') {
 			steps {
