@@ -15,7 +15,7 @@ pipeline {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'udacity-docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						docker build -t nguyenson99/udaciz`ty-capstone-docker-blue ./docker/blue/
+						docker build -t nguyenson99/udacity-capstone-docker-blue ./docker/blue/
 					'''
 				}
 			}
@@ -59,7 +59,7 @@ pipeline {
                     withEnv(["KUBECONFIG=$HOME/.kube/kubeconfig"]) {
                     // Your stuff here
                     sh '''
-						kubectl config use-context arn:aws:eks:us-east-1:125745568001:cluster/udacitycluster
+						kubectl config use-context arn:aws:eks:us-east-1:900569321428:cluster/udacitycluster
 					'''
                     }	
 				}
