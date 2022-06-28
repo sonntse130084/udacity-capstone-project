@@ -6,11 +6,15 @@ This is final project of Udacity Cloud DevOps Engineer Nanodegree Program.
 
 In this project I have implemented all the knowledge that I have learnt from the Udacity Cloud DevOps Engineer Nanodegree program. In this project I have
 
-1.  Created Jenkins server using the AWS CloudFormation.
-2.  Installed all the needed tools in Jenkins master server using the Launch Configuration.
-3.  Creates one EKS cluster in AWS.
-4.  Created one application deployment pipeline that deploys the application docker container in the kubernetes cluster.
-5.  Used blue/green deployment strategy to deploy the application.
+1. Created Jenkins server using the AWS CloudFormation.
+2. Installed all the needed tools in Jenkins master server using the Launch Configuration.
+3. Creates EKS cluster in AWS.
+using the bellow command, it will indirectly create EKS cluster using CloudFormation
+```sh
+eksctl create cluster --name udacitycluster --nodegroup-name standard-workers --node-type t2.micro --nodes 2 --nodes-min 1 --nodes-max 3 --region us-east-1 --zones us-east-1a --zones us-east-1b --zones us-east-1c
+```
+4. Created application deployment pipeline that deploys the application docker container in the kubernetes cluster.
+5. Used blue/green deployment strategy to deploy the application.
 
 ## Project Files
 
@@ -83,7 +87,10 @@ $ ./create-jenkins.sh jenkins-stack jenkins-server/jenkins-server.yml jenkins-se
   - [Blue Ocean](https://plugins.jenkins.io/blueocean/)
 - Add AWS credentials in Jenkins.
 
-- Creates a EKS cluster by SSH to the Jenkins EC2
+- Creates a EKS cluster by SSH to the Jenkins EC2, then run the bellow command to create the EKS cluster
+```sh
+eksctl create cluster --name udacitycluster --nodegroup-name standard-workers --node-type t2.micro --nodes 2 --nodes-min 1 --nodes-max 3 --region us-east-1 --zones us-east-1a --zones us-east-1b --zones us-east-1c
+```
 - Configures kubectl so that we can connect to EKS cluster
 *Note: This pipeline will take around 15-20 minutes to complete.*
 
